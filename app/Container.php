@@ -11,6 +11,13 @@ class Container implements ArrayAccess
     protected $item = [];
     protected $cache = [];
 
+    public function __construct(array $items = [])
+    {
+        foreach ($items as $key => $item) {
+            $this->offsetSet($key, $item);
+        }
+    }
+
     /**
      * Whether a offset exists
      * @link http://php.net/manual/en/arrayaccess.offsetexists.php

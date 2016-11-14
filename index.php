@@ -23,5 +23,12 @@ $container['db'] = function ($c) {
         $c->config['db_pass']);
 };
 
-var_dump($container->config);
+$app->get('/', function (){
+    echo 'home';
+});
+$app->get('/users', function (){
+    echo 'users';
+});
+
+$app->run();
 
