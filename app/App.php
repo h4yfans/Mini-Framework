@@ -80,6 +80,17 @@ class App
             return;
         }
 
+        header(sprintf(
+            'HTTP/%s %s %s',
+            "1.1",
+            $response->getStatusCode(),
+            ''
+        ));
+
+        foreach ($response->getHeaders() as $header) {
+            $header($header[0] . ': ' . $header[1]);
+        }
+
         echo $response->getBody();
     }
 }

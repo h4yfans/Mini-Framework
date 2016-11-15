@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\HomeController;
+use App\Controllers\UserController;
 
 require 'vendor/autoload.php';
 
@@ -9,7 +10,9 @@ $app = new App\App;
 $container = $app->getContainer();
 
 $container['errorHandler'] = function () {
-    die('404');
+    return function ($response) {
+        return $response->setBody('Page not found')->withStatus(404);
+    };
 };
 
 $container['config'] = function () {
@@ -30,6 +33,7 @@ $container['db'] = function ($c) {
 };
 
 $app->get('/index', [HomeController::class, 'index']);
+$app->json('/users', [UserController::class, 'index']);
 
 $app->run();
 
