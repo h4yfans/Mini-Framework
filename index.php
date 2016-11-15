@@ -23,12 +23,17 @@ $container['db'] = function ($c) {
         $c->config['db_pass']);
 };
 
-$app->get('/', function (){
+$app->get('/', function () {
     echo 'home';
 });
-$app->get('/users', function (){
-    echo 'users';
+
+$app->post('/signup', function () {
+    echo 'sign up';
 });
+
+$app->map('/users', function () {
+    echo 'Users';
+}, ['GET', 'POST']);
 
 $app->run();
 

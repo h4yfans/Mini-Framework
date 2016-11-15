@@ -25,6 +25,16 @@ class App
         $this->container->router->addRoute($uri, $handler);
     }
 
+    public function post($uri, $handler)
+    {
+        $this->container->router->addRoute($uri, $handler, ['POST']);
+    }
+
+    public function map($uri, $handler, array $methods = ['GET'])
+    {
+        $this->container->router->addRoute($uri, $handler, $methods);
+    }
+
     public function run()
     {
         $router = $this->container->router;
