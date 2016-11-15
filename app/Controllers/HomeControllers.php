@@ -7,9 +7,11 @@
  */
 namespace App\Controllers;
 
-class HomeController{
+class HomeController
+{
 
-    public function index(){
-        echo 'home';
+    public function index($response)
+    {
+        echo $response->setBody('Home');
     }
 }
