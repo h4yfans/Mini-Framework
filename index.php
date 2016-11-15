@@ -1,5 +1,7 @@
 <?php
 
+use App\Controllers\HomeController;
+
 require 'vendor/autoload.php';
 
 $app = new App\App;
@@ -27,17 +29,7 @@ $container['db'] = function ($c) {
         $c->config['db_pass']);
 };
 
-$app->get('/', function () {
-    echo 'home';
-});
-
-$app->post('/signup', function () {
-    echo 'sign up';
-});
-
-$app->map('/users', function () {
-    echo 'Users';
-}, ['GET', 'POST']);
+$app->get('/index', [HomeController::class, 'index']);
 
 $app->run();
 
